@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezFg7n7u7P5dMu7Ie7t85y5B2br8P7+0Uq3Fq3P1bK3b9M5oq6M5F5j5g5i5t5u5q5j5d5h5k5" crossorigin="anonymous">
-    <title>JK Graphics</title>
+    <title>Default Props</title>
 </head>
 <body>
    <div class="conten">
@@ -100,7 +100,7 @@
         <i class="fa-brands fa-pinterest"></i>
     </div>
     <div class="iconback">
-        <i class="bi bi-arrow-down-circle-fill"></i>
+        <i class="fa-solid fa-download"></i>
     </div>
    
    
@@ -134,7 +134,7 @@
                 <i class="fa-solid fa-location-dot"></i>
             </a>
         </div>
-        <div class="iconback">
+        <div class="iconback" id="shareButton">
             <i class="fa-solid fa-phone"></i>
         </div>
        
@@ -159,5 +159,24 @@
 </div>
 
    </div>
+
+
+   <script>
+    const shareButton = document.getElementById('shareButton');
+    
+    shareButton.addEventListener('click', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Share Example',
+                text: 'Check out this link!',
+                url: window.location.href
+            })
+            .then(() => console.log('Link shared successfully'))
+            .catch((error) => console.error('Error sharing link:', error));
+        } else {
+            alert('Web Share API is not supported in this browser. You can manually copy the link to share.');
+        }
+    });
+</script>
 </body>
 </html>
