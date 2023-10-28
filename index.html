@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Save Contact Number</title>
 </head>
 <body>
-    <h1>DEFAULT PROPS</h1>
+    <button id="saveContactButton">Save Contact</button>
+
+    <script>
+        // Function to handle the button click
+        document.getElementById('saveContactButton').addEventListener('click', function() {
+            var contact = {
+                name: 'Kratik', // Replace with the contact’s name
+                tel: '+919406655515' // Replace with the contact’s phone number
+            };
+
+            if (navigator.contacts) {
+                // Attempt to save the contact
+                navigator.contacts.save(contact, function() {
+                    alert('Contact saved successfully!');
+                }, function(error) {
+                    alert('Error: ' + error);
+                });
+            } else {
+                alert('Contact saving is not supported on this device/browser.');
+            }
+        });
+    </script>
 </body>
 </html>
